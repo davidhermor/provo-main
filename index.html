@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PROVO | Acadèmia d'Anglès · Classes Presencials i Online</title>
+  <title>PROVO | Acadèmia d'Anglès Online</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -272,7 +272,7 @@
 
     .stat-box strong {
       display: block;
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       font-weight: 800;
       color: #A5F3FC;
     }
@@ -281,6 +281,9 @@
       font-size: 0.78rem;
       color: #E0F2FE;
       font-weight: 600;
+      line-height: 1.35;
+      display: block;
+      margin-top: 0.2rem;
     }
 
     /* Sections */
@@ -333,9 +336,9 @@
       gap: 1.4rem;
     }
 
-    .grid-4 {
+    .courses-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       gap: 1.3rem;
     }
 
@@ -394,75 +397,116 @@
     }
 
     .lvl-kids { background: #FEF3C7; color: #B45309; }
+    .lvl-teens { background: #D1FAE5; color: #065F46; }
     .lvl-general { background: #EBF4F9; color: #005A8D; }
     .lvl-ote { background: #E0F2FE; color: #0369A1; }
+    .lvl-business { background: #E0E7FF; color: #3730A3; }
     .lvl-travel { background: #FFEDD5; color: #C2410C; }
+    .lvl-private { background: #FFE4E6; color: #BE123C; }
 
-    /* Hall of Fame */
-    .hof-filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.45rem;
+    /* Hall of Fame Carousel */
+    .hof-nav-btns {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
-    .hof-btn {
+    .hof-arrow {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
       background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--muted);
+      border: 1.5px solid var(--border);
+      color: var(--text);
       font-family: inherit;
-      font-size: 0.8rem;
-      font-weight: 700;
-      padding: 0.45rem 0.9rem;
-      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 800;
       cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.16s ease;
     }
 
-    .hof-btn.active {
-      background: linear-gradient(135deg, var(--navy), var(--teal));
+    .hof-arrow:hover {
+      border-color: var(--teal);
+      background: var(--navy);
       color: #FFFFFF;
-      border-color: transparent;
     }
+
+    .hof-carousel-wrap {
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .hof-track {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: calc(33.333% - 0.95rem);
+      gap: 1.4rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      padding-bottom: 0.4rem;
+    }
+
+    .hof-track::-webkit-scrollbar { display: none; }
 
     .hof-card {
+      scroll-snap-align: start;
       background: var(--surface);
       border: 1.5px solid var(--border);
       border-radius: 22px;
-      padding: 1.45rem;
+      padding: 1.5rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 0.9rem;
+      gap: 1rem;
       box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+      transition: border-color 0.18s ease;
     }
+
+    .hof-card:hover { border-color: var(--teal); }
 
     .hof-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 0.5rem;
+      gap: 0.75rem;
     }
 
-    .hof-avatar {
-      width: 44px;
-      height: 44px;
+    .hof-avatar-box {
+      width: 54px;
+      height: 54px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--navy), var(--teal));
       color: #FFFFFF;
       font-weight: 800;
-      font-size: 0.95rem;
+      font-size: 1rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      shrink: 0;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 2px solid rgba(0, 137, 167, 0.35);
+    }
+
+    .hof-avatar-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .hof-cert {
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       font-weight: 800;
-      padding: 0.28rem 0.7rem;
+      padding: 0.3rem 0.78rem;
       border-radius: 999px;
       background: rgba(245, 158, 11, 0.16);
       color: #B45309;
+      white-space: nowrap;
     }
 
     html.dark .hof-cert {
@@ -471,7 +515,7 @@
     }
 
     .hof-name {
-      font-size: 1.08rem;
+      font-size: 1.1rem;
       font-weight: 800;
     }
 
@@ -482,36 +526,78 @@
     }
 
     .hof-quote {
-      font-size: 0.86rem;
+      font-size: 0.88rem;
       color: var(--muted);
       font-style: italic;
     }
 
-    /* Portal CTA Banner */
+    .hof-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.45rem;
+      margin-top: 1.1rem;
+    }
+
+    .hof-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      border: none;
+      background: var(--border);
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .hof-dot.active {
+      width: 24px;
+      background: var(--teal);
+    }
+
+    /* Portal Promo Banner */
     .portal-banner {
       margin-top: 4rem;
-      background: linear-gradient(135deg, var(--navy), var(--ocean));
+      background: linear-gradient(135deg, var(--navy) 0%, var(--ocean) 60%, var(--teal) 100%);
       color: #FFFFFF;
       border-radius: 28px;
-      padding: 2.3rem 2rem;
+      padding: 2.4rem 2.2rem;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       gap: 1.5rem;
       box-shadow: 0 18px 36px rgba(0, 43, 92, 0.22);
+      border: 1px solid rgba(165, 243, 252, 0.25);
+    }
+
+    .promo-pill {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.16);
+      color: #A5F3FC;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.75rem;
+      border-radius: 999px;
+      margin-bottom: 0.65rem;
     }
 
     .portal-banner h2 {
-      font-size: 1.6rem;
+      font-size: clamp(1.4rem, 2.6vw, 1.85rem);
       font-weight: 800;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.45rem;
     }
 
     .portal-banner p {
       color: #E0F2FE;
       font-size: 0.95rem;
-      max-width: 600px;
+      max-width: 640px;
+    }
+
+    .banner-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
     }
 
     /* Contact Box */
@@ -554,18 +640,62 @@
       cursor: pointer;
     }
 
+    /* Footer */
     footer {
-      text-align: center;
-      padding: 1.8rem 5%;
+      padding: 2rem 5%;
       background: var(--surface);
       border-top: 1px solid var(--border);
       font-size: 0.86rem;
       color: var(--muted);
     }
 
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .social-links {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.48rem 0.95rem;
+      border-radius: 999px;
+      background: var(--surface-alt);
+      border: 1.5px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 800;
+      transition: border-color 0.16s ease, transform 0.16s ease;
+    }
+
+    .social-btn:hover {
+      border-color: var(--teal);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 960px) {
+      .hof-track { grid-auto-columns: calc(50% - 0.7rem); }
+    }
+
     @media (max-width: 880px) {
       .hero-grid, .contact-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
+    }
+
+    @media (max-width: 620px) {
+      .hof-track { grid-auto-columns: 100%; }
     }
   </style>
 </head>
@@ -610,14 +740,14 @@
   <section id="top" class="hero-wrap">
     <div class="hero-grid">
       <div>
-        <span class="hero-badge" data-i18n="hero_badge">Manresa · Presencial i Online</span>
+        <span class="hero-badge" data-i18n="hero_badge">Classes Online en Directe · Tots els Nivells</span>
         <h1 data-i18n-html="hero_title">Aprèn anglès per <span>comunicar-te de veritat</span></h1>
         <p class="hero-copy" data-i18n="hero_copy">
-          Classes dinàmiques, visuals i adaptades a cada etapa: des dels primers passos a primària fins a la preparació oficial d'exàmens Oxford Test of English (B1 i B2) o anglès pràctic per viatjar.
+          Classes online dinàmiques, visuals i adaptades a cada etapa: des dels primers passos a primària fins a la preparació oficial Oxford Test of English, Business English o anglès pràctic per viatjar.
         </p>
         <div class="hero-actions">
           <a href="#contact" class="btn-primary" data-i18n="hero_cta_primary">Demana informació</a>
-          <a href="https://davidhermor.github.io/provo/" class="btn-secondary" data-i18n="hero_cta_portal">Accés al Portal d'Alumnes →</a>
+          <a href="https://davidhermor.github.io/provo/" class="btn-secondary" data-i18n="hero_cta_portal">Descobreix el Portal d'Estudi →</a>
         </div>
       </div>
 
@@ -627,12 +757,12 @@
         </div>
         <div class="hero-stat-grid">
           <div class="stat-box">
-            <strong>A1 – B2</strong>
+            <strong>A1 – C1</strong>
             <span data-i18n="stat_1">Tots els nivells i edats</span>
           </div>
           <div class="stat-box">
             <strong>OTE</strong>
-            <span data-i18n="stat_2">Preparació Oxford B1 / B2</span>
+            <span data-i18n="stat_2">Preparació Oxford Test of English</span>
           </div>
           <div class="stat-box">
             <strong data-i18n="stat_3_title">Grups reduïts</strong>
@@ -640,7 +770,7 @@
           </div>
           <div class="stat-box">
             <strong>PROVO Lab</strong>
-            <span data-i18n="stat_4">Portal interactiu propi en anglès</span>
+            <span data-i18n="stat_4">Portal interactiu d'aprenentatge propi en anglès</span>
           </div>
         </div>
       </aside>
@@ -678,10 +808,10 @@
         </article>
 
         <article class="panel">
-          <div class="icon-pill">💻</div>
-          <h3 data-i18n="feat_3_title">Portal interactiu PROVO</h3>
+          <div class="icon-pill">🎓</div>
+          <h3 data-i18n="feat_3_title">Professors titulats i amb experiència</h3>
           <p data-i18n="feat_3_desc">
-            Els nostres alumnes tenen accés exclusiu a una plataforma pròpia en anglès amb activitats interactives, àudios i repàs per nivells.
+            Docents titulats i especialitzats en l'ensenyament d'anglès comunicatiu i certificacions oficials, amb seguiment proper del teu progrés.
           </p>
         </article>
       </div>
@@ -696,36 +826,60 @@
         </div>
       </div>
 
-      <div class="grid-4">
+      <div class="courses-grid">
         <article class="panel">
           <span class="level-tag lvl-kids" data-i18n="c1_tag">Primària · Kids</span>
           <h3 data-i18n="c1_title">Primers passos amb joc i oïda</h3>
           <p data-i18n="c1_desc">
-            Grups reduïts per a nens i nenes (1r a 6è de primària) amb cançons, fonètica, vocabulari visual i rutines orals naturals.
+            Grups reduïts per a nens i nenes de primària amb cançons, fonètica, vocabulari visual i rutines orals naturals.
           </p>
         </article>
 
         <article class="panel">
-          <span class="level-tag lvl-general" data-i18n="c2_tag">Joves i Adults · A1–B2</span>
-          <h3 data-i18n="c2_title">Anglès general i conversa</h3>
+          <span class="level-tag lvl-teens" data-i18n="c2_tag">Secundària · Teens</span>
+          <h3 data-i18n="c2_title">Anglès per a joves</h3>
           <p data-i18n="c2_desc">
-            Reforça la base comunicativa, millora la comprensió auditiva i guanya seguretat tant a classe presencial com online.
+            Temes actuals, expressió oral real i consolidació de gramàtica perquè parlin anglès amb seguretat dins i fora de l'institut.
           </p>
         </article>
 
         <article class="panel">
-          <span class="level-tag lvl-ote" data-i18n="c3_tag">Certificació Oficial</span>
-          <h3 data-i18n="c3_title">Oxford Test of English (B1 / B2)</h3>
+          <span class="level-tag lvl-general" data-i18n="c3_tag">Joves i Adults · A1–C1</span>
+          <h3 data-i18n="c3_title">Anglès general i conversa</h3>
           <p data-i18n="c3_desc">
-            Preparació específica per a l'examen OTE (i OTE for Schools): estratègies reals de Speaking, Writing, Reading i Listening.
+            Des de nivell inicial fins a avançat (A1–C1): millora la comprensió auditiva, amplia vocabulari i guanya fluïdesa real.
           </p>
         </article>
 
         <article class="panel">
-          <span class="level-tag lvl-travel" data-i18n="c4_tag">Pràctic · Multinivell</span>
-          <h3 data-i18n="c4_title">Travel &amp; Everyday English</h3>
+          <span class="level-tag lvl-ote" data-i18n="c4_tag">Certificació Oficial</span>
+          <h3 data-i18n="c4_title">Oxford Test of English</h3>
           <p data-i18n="c4_desc">
+            Preparació específica per a l'examen oficial OTE (i OTE for Schools): estratègies pràctiques de Speaking, Writing, Reading i Listening.
+          </p>
+        </article>
+
+        <article class="panel">
+          <span class="level-tag lvl-business" data-i18n="c5_tag">Professional</span>
+          <h3 data-i18n="c5_title">Business English</h3>
+          <p data-i18n="c5_desc">
+            Correus electrònics professionals, trucades, reunions i presentacions per comunicar-te amb naturalitat en entorns laborals internacionals.
+          </p>
+        </article>
+
+        <article class="panel">
+          <span class="level-tag lvl-travel" data-i18n="c6_tag">Pràctic · Multinivell</span>
+          <h3 data-i18n="c6_title">Travel &amp; Everyday English</h3>
+          <p data-i18n="c6_desc">
             Mòduls pràctics per defensar-te en aeroports, hotels, restaurants i situacions quotidianes encara que comencis des de zero.
+          </p>
+        </article>
+
+        <article class="panel">
+          <span class="level-tag lvl-private" data-i18n="c7_tag">100% Personalitzat</span>
+          <h3 data-i18n="c7_title">Classes Particulars</h3>
+          <p data-i18n="c7_desc">
+            Sessions individuals a mida amb horari flexible, ritme propi i materials dissenyats segons les teves necessitats concretes.
           </p>
         </article>
       </div>
@@ -738,27 +892,36 @@
           <span class="eyebrow" data-i18n="hof_eyebrow">Resultats reals</span>
           <h2 data-i18n="hof_title">Hall of Fame · Títols Oficials</h2>
         </div>
-        <div class="hof-filters">
-          <button type="button" class="hof-btn active" data-hof="all" data-i18n="hof_all">Tots</button>
-          <button type="button" class="hof-btn" data-hof="B1">OTE B1</button>
-          <button type="button" class="hof-btn" data-hof="B2">OTE B2</button>
+
+        <div class="hof-nav-btns">
+          <button type="button" id="hofPrevBtn" class="hof-arrow" aria-label="Previous">←</button>
+          <button type="button" id="hofNextBtn" class="hof-arrow" aria-label="Next">→</button>
         </div>
       </div>
 
-      <div class="grid-3" id="hofGrid"></div>
+      <div class="hof-carousel-wrap">
+        <div class="hof-track" id="hofTrack"></div>
+      </div>
+      <div class="hof-dots" id="hofDots"></div>
     </section>
 
-    <!-- Student Portal Banner -->
+    <!-- Portal d'Estudi Promo Banner -->
     <section class="portal-banner">
       <div>
-        <h2 data-i18n="banner_title">Ja ets alumne de PROVO?</h2>
+        <span class="promo-pill" data-i18n="banner_pill">Eina interactiva PROVO</span>
+        <h2 data-i18n="banner_title">Entrena el teu anglès al nostre Portal d'Estudi</h2>
         <p data-i18n="banner_desc">
-          Entra al portal interactiu en anglès amb el teu usuari i contrasenya per repassar lliçons, escoltar àudios i enviar notes de veu.
+          Un entorn digital propi en anglès amb lliçons interactives multinivell, àudios, reptes i gravació de notes de veu per practicar al teu ritme (servei independent de les classes).
         </p>
       </div>
-      <a href="https://davidhermor.github.io/provo/" class="btn-primary" data-i18n="banner_btn">
-        Obrir Portal d'Estudi →
-      </a>
+      <div class="banner-cta-group">
+        <a href="https://davidhermor.github.io/provo/" class="btn-primary" data-i18n="banner_btn">
+          Accedir al Portal d'Estudi →
+        </a>
+        <a href="#contact" class="btn-secondary" data-i18n="banner_btn_info">
+          Demanar accés
+        </a>
+      </div>
     </section>
 
     <!-- Contact -->
@@ -766,28 +929,29 @@
       <div class="section-head">
         <div>
           <span class="eyebrow" data-i18n="contact_eyebrow">Parlem-ne</span>
-          <h2 data-i18n="contact_title">Vols saber quin grup o horari s'adapta a tu?</h2>
+          <h2 data-i18n="contact_title">Vols saber quin curs o horari s'adapta a tu?</h2>
         </div>
       </div>
 
       <div class="contact-grid">
         <div class="panel" style="display: flex; flex-direction: column; justify-content: space-between; gap: 1.2rem;">
           <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-            <h3 data-i18n="contact_info_title">Classes a Manresa i Online</h3>
+            <h3 data-i18n="contact_info_title">Classes online en directe i flexibles</h3>
             <p data-i18n="contact_info_desc">
-              Escriu-nos sense compromís per consultar places disponibles, horaris de tarda o classes individuals online.
+              Escriu-nos sense compromís per consultar horaris disponibles, grups per nivells, classes particulars o accés al Portal d'Estudi.
             </p>
           </div>
-          <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem; font-weight: 700;">
-            <div>📍 Manresa (Catalunya) · Online (Google Meet / Zoom)</div>
+          <div style="display: flex; flex-direction: column; gap: 0.55rem; font-size: 0.9rem; font-weight: 700;">
+            <div data-i18n="contact_line_1">💻 Classes 100% Online en directe (Google Meet / Zoom)</div>
             <div>🌐 Web: provo.cat · Portal: provoenglish.com</div>
+            <div>📱 Instagram &amp; Facebook: @provoenglish</div>
           </div>
         </div>
 
         <form class="panel contact-form" id="contactForm">
           <input type="text" id="cName" class="field" required data-i18n-ph="ph_name" placeholder="El teu nom..." />
           <input type="email" id="cEmail" class="field" required data-i18n-ph="ph_email" placeholder="El teu correu electrònic..." />
-          <textarea id="cMsg" rows="3" class="field" required data-i18n-ph="ph_msg" placeholder="Explica'ns què busques (nivell, edat, preparació OTE, viatges...)"></textarea>
+          <textarea id="cMsg" rows="3" class="field" required data-i18n-ph="ph_msg" placeholder="Explica'ns què busques (nivell, edat, OTE, classes particulars, portal...)"></textarea>
           <button type="submit" class="submit-btn" data-i18n="contact_send">Enviar consulta →</button>
           <div id="contactFeedback" style="font-size: 0.84rem; font-weight: 700; color: var(--teal); min-height: 1.2rem;"></div>
         </form>
@@ -796,17 +960,33 @@
   </main>
 
   <footer>
-    <strong>PROVO</strong> · <span data-i18n="footer_text">Acadèmia d'Anglès · Manresa i Online</span>
+    <div class="footer-inner">
+      <div>
+        <strong>PROVO</strong> · <span data-i18n="footer_text">Acadèmia d'Anglès Online</span>
+      </div>
+
+      <div class="social-links">
+        <a href="https://www.instagram.com/provoenglish/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram @provoenglish">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          <span>@provoenglish</span>
+        </a>
+
+        <a href="https://www.facebook.com/provoenglish" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook @provoenglish">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          <span>@provoenglish</span>
+        </a>
+      </div>
+    </div>
   </footer>
 
   <script>
-    // ==================== HALL OF FAME DATA (EDITABLE) ====================
+    // ==================== HALL OF FAME DATA (ADD PHOTO URLS WHEN READY) ====================
     const HALL_OF_FAME = [
       {
         initials: "MC",
+        photo: "", // Ex: "https://.../marta.jpg"
         name: "Marta C.",
         level: "B2",
-        cert: "Oxford Test of English · B2",
         year: "2026",
         quote: {
           ca: "«Les pràctiques de Speaking i l'estructura de l'essay em van donar molta seguretat el dia de l'examen.»",
@@ -816,9 +996,9 @@
       },
       {
         initials: "JP",
+        photo: "",
         name: "Jordi P.",
         level: "B1",
-        cert: "Oxford Test of English · B1",
         year: "2026",
         quote: {
           ca: "«Feia anys que no estudiava anglès i amb les classes pràctiques vaig treure el B1 a la primera.»",
@@ -828,14 +1008,26 @@
       },
       {
         initials: "LR",
+        photo: "",
         name: "Laia R.",
+        level: "C1",
+        year: "2026",
+        quote: {
+          ca: "«Les sessions individuals em van ajudar a polir els matisos i aconseguir el nivell C1 amb confiança.»",
+          es: "«Las sesiones individuales me ayudaron a pulir los matices y conseguir el nivel C1 con confianza.»",
+          en: "“The one-to-one sessions helped me refine nuances and achieve C1 with real confidence.”"
+        }
+      },
+      {
+        initials: "AG",
+        photo: "",
+        name: "Arnau G.",
         level: "B2",
-        cert: "OTE for Schools · B2",
         year: "2025",
         quote: {
-          ca: "«M'encantava poder repassar des del portal amb els àudios i exemples abans de cada sessió.»",
-          es: "«Me encantaba poder repasar desde el portal con los audios y ejemplos antes de cada sesión.»",
-          en: "“I loved reviewing on the portal with audio prompts and examples before every session.”"
+          ca: "«M'encantava poder practicar amb situacions reals i repassar amb els àudios abans de cada classe.»",
+          es: "«Me encantaba poder practicar con situaciones reales y repasar con los audios antes de cada clase.»",
+          en: "“I loved practicing real-life situations and reviewing with audio prompts before each session.”"
         }
       }
     ];
@@ -848,17 +1040,17 @@
         nav_hof: "Hall of Fame",
         nav_contact: "Contacte",
         nav_portal: "Portal Alumnes →",
-        hero_badge: "Manresa · Presencial i Online",
+        hero_badge: "Classes Online en Directe · Tots els Nivells",
         hero_title: "Aprèn anglès per <span>comunicar-te de veritat</span>",
-        hero_copy: "Classes dinàmiques, visuals i adaptades a cada etapa: des dels primers passos a primària fins a la preparació oficial d'exàmens Oxford Test of English (B1 i B2) o anglès pràctic per viatjar.",
+        hero_copy: "Classes online dinàmiques, visuals i adaptades a cada etapa: des dels primers passos a primària fins a la preparació oficial Oxford Test of English, Business English o anglès pràctic per viatjar.",
         hero_cta_primary: "Demana informació",
-        hero_cta_portal: "Accés al Portal d'Alumnes →",
+        hero_cta_portal: "Descobreix el Portal d'Estudi →",
         hero_card_label: "En resum · PROVO",
         stat_1: "Tots els nivells i edats",
-        stat_2: "Preparació Oxford B1 / B2",
+        stat_2: "Preparació Oxford Test of English",
         stat_3_title: "Grups reduïts",
         stat_3: "Atenció propera i personalitzada",
-        stat_4: "Portal interactiu propi en anglès",
+        stat_4: "Portal interactiu d'aprenentatge propi en anglès",
         about_eyebrow: "Qui som i com treballem",
         about_title: "Un enfocament proper, visual i pràctic",
         about_sub: "Creiem que aprendre un idioma funciona millor quan perds la por d'equivocar-te, entens com funcionen les estructures i practiques situacions reals des del primer dia.",
@@ -866,38 +1058,50 @@
         feat_1_desc: "Sessions actives amb suport visual, jocs de rol i dinàmiques reals perquè guanyis fluïdesa sense memoritzar llistes interminables.",
         feat_2_title: "Explicacions clares i sense dogmes",
         feat_2_desc: "Quan cal aclarir un dubte de gramàtica o la mecànica d'un examen oficial, ho expliquem de manera directa perquè ho entenguis al 100%.",
-        feat_3_title: "Portal interactiu PROVO",
-        feat_3_desc: "Els nostres alumnes tenen accés exclusiu a una plataforma pròpia en anglès amb activitats interactives, àudios i repàs per nivells.",
+        feat_3_title: "Professors titulats i amb experiència",
+        feat_3_desc: "Docents titulats i especialitzats en l'ensenyament d'anglès comunicatiu i certificacions oficials, amb seguiment proper del teu progrés.",
         courses_eyebrow: "Oferta formativa",
         courses_title: "Cursos adaptats al teu objectiu",
         c1_tag: "Primària · Kids",
         c1_title: "Primers passos amb joc i oïda",
-        c1_desc: "Grups reduïts per a nens i nenes (1r a 6è de primària) amb cançons, fonètica, vocabulari visual i rutines orals naturals.",
-        c2_tag: "Joves i Adults · A1–B2",
-        c2_title: "Anglès general i conversa",
-        c2_desc: "Reforça la base comunicativa, millora la comprensió auditiva i guanya seguretat tant a classe presencial com online.",
-        c3_tag: "Certificació Oficial",
-        c3_title: "Oxford Test of English (B1 / B2)",
-        c3_desc: "Preparació específica per a l'examen OTE (i OTE for Schools): estratègies reals de Speaking, Writing, Reading i Listening.",
-        c4_tag: "Pràctic · Multinivell",
-        c4_title: "Travel & Everyday English",
-        c4_desc: "Mòduls pràctics per defensar-te en aeroports, hotels, restaurants i situacions quotidianes encara que comencis des de zero.",
+        c1_desc: "Grups reduïts per a nens i nenes de primària amb cançons, fonètica, vocabulari visual i rutines orals naturals.",
+        c2_tag: "Secundària · Teens",
+        c2_title: "Anglès per a joves",
+        c2_desc: "Temes actuals, expressió oral real i consolidació de gramàtica perquè parlin anglès amb seguretat dins i fora de l'institut.",
+        c3_tag: "Joves i Adults · A1–C1",
+        c3_title: "Anglès general i conversa",
+        c3_desc: "Des de nivell inicial fins a avançat (A1–C1): millora la comprensió auditiva, amplia vocabulari i guanya fluïdesa real.",
+        c4_tag: "Certificació Oficial",
+        c4_title: "Oxford Test of English",
+        c4_desc: "Preparació específica per a l'examen oficial OTE (i OTE for Schools): estratègies pràctiques de Speaking, Writing, Reading i Listening.",
+        c5_tag: "Professional",
+        c5_title: "Business English",
+        c5_desc: "Correus electrònics professionals, trucades, reunions i presentacions per comunicar-te amb naturalitat en entorns laborals internacionals.",
+        c6_tag: "Pràctic · Multinivell",
+        c6_title: "Travel & Everyday English",
+        c6_desc: "Mòduls pràctics per defensar-te en aeroports, hotels, restaurants i situacions quotidianes encara que comencis des de zero.",
+        c7_tag: "100% Personalitzat",
+        c7_title: "Classes Particulars",
+        c7_desc: "Sessions individuals a mida amb horari flexible, ritme propi i materials dissenyats segons les teves necessitats concretes.",
         hof_eyebrow: "Resultats reals",
         hof_title: "Hall of Fame · Títols Oficials",
-        hof_all: "Tots",
-        banner_title: "Ja ets alumne de PROVO?",
-        banner_desc: "Entra al portal interactiu en anglès amb el teu usuari i contrasenya per repassar lliçons, escoltar àudios i enviar notes de veu.",
-        banner_btn: "Obrir Portal d'Estudi →",
+        hof_cert_prefix: "Certificat Oficial",
+        banner_pill: "Eina interactiva PROVO",
+        banner_title: "Entrena el teu anglès al nostre Portal d'Estudi",
+        banner_desc: "Un entorn digital propi en anglès amb lliçons interactives multinivell, àudios, reptes i gravació de notes de veu per practicar al teu ritme (servei independent de les classes).",
+        banner_btn: "Accedir al Portal d'Estudi →",
+        banner_btn_info: "Demanar accés",
         contact_eyebrow: "Parlem-ne",
-        contact_title: "Vols saber quin grup o horari s'adapta a tu?",
-        contact_info_title: "Classes a Manresa i Online",
-        contact_info_desc: "Escriu-nos sense compromís per consultar places disponibles, horaris de tarda o classes individuals online.",
+        contact_title: "Vols saber quin curs o horari s'adapta a tu?",
+        contact_info_title: "Classes online en directe i flexibles",
+        contact_info_desc: "Escriu-nos sense compromís per consultar horaris disponibles, grups per nivells, classes particulars o accés al Portal d'Estudi.",
+        contact_line_1: "💻 Classes 100% Online en directe (Google Meet / Zoom)",
         ph_name: "El teu nom...",
         ph_email: "El teu correu electrònic...",
-        ph_msg: "Explica'ns què busques (nivell, edat, preparació OTE, viatges...)",
+        ph_msg: "Explica'ns què busques (nivell, edat, OTE, classes particulars, portal...)",
         contact_send: "Enviar consulta →",
         contact_ok: "✓ Gràcies! S'ha preparat el teu missatge.",
-        footer_text: "Acadèmia d'Anglès · Manresa i Online"
+        footer_text: "Acadèmia d'Anglès Online"
       },
       es: {
         nav_about: "Quiénes somos",
@@ -905,17 +1109,17 @@
         nav_hof: "Hall of Fame",
         nav_contact: "Contacto",
         nav_portal: "Portal Alumnos →",
-        hero_badge: "Manresa · Presencial y Online",
+        hero_badge: "Clases Online en Directo · Todos los Niveles",
         hero_title: "Aprende inglés para <span>comunicarte de verdad</span>",
-        hero_copy: "Clases dinámicas, visuales y adaptadas a cada etapa: desde los primeros pasos en primaria hasta la preparación oficial de exámenes Oxford Test of English (B1 y B2) o inglés práctico para viajar.",
+        hero_copy: "Clases online dinámicas, visuales y adaptadas a cada etapa: desde los primeros pasos en primaria hasta la preparación oficial Oxford Test of English, Business English o inglés práctico para viajar.",
         hero_cta_primary: "Pide información",
-        hero_cta_portal: "Acceso al Portal de Alumnos →",
+        hero_cta_portal: "Descubre el Portal de Estudio →",
         hero_card_label: "En resumen · PROVO",
         stat_1: "Todos los niveles y edades",
-        stat_2: "Preparación Oxford B1 / B2",
+        stat_2: "Preparación Oxford Test of English",
         stat_3_title: "Grupos reducidos",
         stat_3: "Atención cercana y personalizada",
-        stat_4: "Portal interactivo propio en inglés",
+        stat_4: "Portal interactivo de aprendizaje propio en inglés",
         about_eyebrow: "Quiénes somos y cómo trabajamos",
         about_title: "Un enfoque cercano, visual y práctico",
         about_sub: "Creemos que aprender un idioma funciona mejor cuando pierdes el miedo a equivocarte, entiendes cómo funcionan las estructuras y practicas situaciones reales desde el primer día.",
@@ -923,38 +1127,50 @@
         feat_1_desc: "Sesiones activas con apoyo visual, juegos de rol y dinámicas reales para ganar fluidez sin memorizar listas interminables.",
         feat_2_title: "Explicaciones claras y sin dogmas",
         feat_2_desc: "Cuando hace falta aclarar una duda de gramática o la mecánica de un examen oficial, lo explicamos de forma directa para que lo entiendas al 100%.",
-        feat_3_title: "Portal interactivo PROVO",
-        feat_3_desc: "Nuestros alumnos tienen acceso exclusivo a una plataforma propia en inglés con actividades interactivas, audios y repaso por niveles.",
+        feat_3_title: "Profesores titulados y con experiencia",
+        feat_3_desc: "Docentes titulados y especializados en la enseñanza de inglés comunicativo y certificaciones oficiales, con seguimiento cercano de tu progreso.",
         courses_eyebrow: "Oferta formativa",
         courses_title: "Cursos adaptados a tu objetivo",
         c1_tag: "Primaria · Kids",
         c1_title: "Primeros pasos con juego y oído",
-        c1_desc: "Grupos reducidos para niños y niñas (1.º a 6.º de primaria) con canciones, fonética, vocabulario visual y rutinas orales naturales.",
-        c2_tag: "Jóvenes y Adultos · A1–B2",
-        c2_title: "Inglés general y conversación",
-        c2_desc: "Refuerza tu base comunicativa, mejora la comprensión auditiva y gana seguridad tanto en clase presencial como online.",
-        c3_tag: "Certificación Oficial",
-        c3_title: "Oxford Test of English (B1 / B2)",
-        c3_desc: "Preparación específica para el examen OTE (y OTE for Schools): estrategias reales de Speaking, Writing, Reading y Listening.",
-        c4_tag: "Práctico · Multinivel",
-        c4_title: "Travel & Everyday English",
-        c4_desc: "Módulos prácticos para defenderte en aeropuertos, hoteles, restaurantes y situaciones cotidianas aunque empieces desde cero.",
+        c1_desc: "Grupos reducidos para niños y niñas de primaria con canciones, fonética, vocabulario visual y rutinas orales naturales.",
+        c2_tag: "Secundaria · Teens",
+        c2_title: "Inglés para jóvenes",
+        c2_desc: "Temas actuales, expresión oral real y consolidación de gramática para que hablen inglés con seguridad dentro y fuera del instituto.",
+        c3_tag: "Jóvenes y Adultos · A1–C1",
+        c3_title: "Inglés general y conversación",
+        c3_desc: "Desde nivel inicial hasta avanzado (A1–C1): mejora la comprensión auditiva, amplía vocabulario y gana fluidez real.",
+        c4_tag: "Certificación Oficial",
+        c4_title: "Oxford Test of English",
+        c4_desc: "Preparación específica para el examen oficial OTE (y OTE for Schools): estrategias prácticas de Speaking, Writing, Reading y Listening.",
+        c5_tag: "Profesional",
+        c5_title: "Business English",
+        c5_desc: "Correos electrónicos profesionales, llamadas, reuniones y presentaciones para comunicarte con naturalidad en entornos laborales internacionales.",
+        c6_tag: "Práctico · Multinivel",
+        c6_title: "Travel & Everyday English",
+        c6_desc: "Módulos prácticos para defenderte en aeropuertos, hoteles, restaurantes y situaciones cotidianas aunque empieces desde cero.",
+        c7_tag: "100% Personalizado",
+        c7_title: "Clases Particulares",
+        c7_desc: "Sesiones individuales a medida con horario flexible, ritmo propio y materiales diseñados según tus necesidades concretas.",
         hof_eyebrow: "Resultados reales",
         hof_title: "Hall of Fame · Títulos Oficiales",
-        hof_all: "Todos",
-        banner_title: "¿Ya eres alumno de PROVO?",
-        banner_desc: "Entra al portal interactivo en inglés con tu usuario y contraseña para repasar lecciones, escuchar audios y enviar notas de voz.",
-        banner_btn: "Abrir Portal de Estudio →",
+        hof_cert_prefix: "Certificado Oficial",
+        banner_pill: "Herramienta interactiva PROVO",
+        banner_title: "Entrena tu inglés en nuestro Portal de Estudio",
+        banner_desc: "Un entorno digital propio en inglés con lecciones interactivas multinivel, audios, retos y grabación de notas de voz para practicar a tu ritmo (servicio independiente de las clases).",
+        banner_btn: "Acceder al Portal de Estudio →",
+        banner_btn_info: "Solicitar acceso",
         contact_eyebrow: "Hablemos",
-        contact_title: "¿Quieres saber qué grupo u horario encaja contigo?",
-        contact_info_title: "Clases en Manresa y Online",
-        contact_info_desc: "Escríbenos sin compromiso para consultar plazas disponibles, horarios de tarde o clases individuales online.",
+        contact_title: "¿Quieres saber qué curso u horario encaja contigo?",
+        contact_info_title: "Clases online en directo y flexibles",
+        contact_info_desc: "Escríbenos sin compromiso para consultar horarios disponibles, grupos por niveles, clases particulares o acceso al Portal de Estudio.",
+        contact_line_1: "💻 Clases 100% Online en directo (Google Meet / Zoom)",
         ph_name: "Tu nombre...",
         ph_email: "Tu correo electrónico...",
-        ph_msg: "Cuéntanos qué buscas (nivel, edad, preparación OTE, viajes...)",
+        ph_msg: "Cuéntanos qué buscas (nivel, edad, OTE, clases particulares, portal...)",
         contact_send: "Enviar consulta →",
         contact_ok: "✓ ¡Gracias! Se ha preparado tu consulta.",
-        footer_text: "Academia de Inglés · Manresa y Online"
+        footer_text: "Academia de Inglés Online"
       },
       en: {
         nav_about: "About Us",
@@ -962,17 +1178,17 @@
         nav_hof: "Hall of Fame",
         nav_contact: "Contact",
         nav_portal: "Student Portal →",
-        hero_badge: "Manresa · In-Person & Online",
+        hero_badge: "Live Online Classes · All Levels",
         hero_title: "Learn English for <span>real communication</span>",
-        hero_copy: "Dynamic, visual lessons tailored to every stage—from primary school learners to official Oxford Test of English (B1 & B2) certification and practical Travel English.",
+        hero_copy: "Dynamic, visual online lessons tailored to every stage—from primary school learners to official Oxford Test of English certification, Business English, and practical Travel English.",
         hero_cta_primary: "Get in Touch",
-        hero_cta_portal: "Open Student Portal →",
+        hero_cta_portal: "Explore the Study Portal →",
         hero_card_label: "At a Glance · PROVO",
         stat_1: "All levels and ages",
-        stat_2: "Oxford B1 / B2 Exam Prep",
+        stat_2: "Oxford Test of English Prep",
         stat_3_title: "Small Groups",
         stat_3: "Close, personalized guidance",
-        stat_4: "Interactive English Study Portal",
+        stat_4: "Custom interactive English learning portal",
         about_eyebrow: "Who we are & how we teach",
         about_title: "A friendly, visual, and practical approach",
         about_sub: "Language learning works best when you lose the fear of making mistakes, truly understand how structures work, and practice real scenarios from day one.",
@@ -980,61 +1196,118 @@
         feat_1_desc: "Active sessions with visual prompts, role-plays, and real communication so you build fluency without memorizing endless lists.",
         feat_2_title: "Clear Explanations, Zero Dogma",
         feat_2_desc: "Whenever a grammar rule or exam task needs unpacking, we explain it clearly so you understand every detail.",
-        feat_3_title: "PROVO Interactive Portal",
-        feat_3_desc: "Enrolled students get exclusive access to our English-only interactive platform with audio drills, games, and level-based review.",
+        feat_3_title: "Qualified & Experienced Teachers",
+        feat_3_desc: "Certified educators specializing in communicative English and official exam preparation, with close tracking of your progress.",
         courses_eyebrow: "Programs",
         courses_title: "Courses built around your goals",
         c1_tag: "Primary · Kids",
         c1_title: "Early Steps Through Play & Sound",
-        c1_desc: "Small groups for ages 6–12 with songs, phonics, visual vocabulary, and natural classroom speaking routines.",
-        c2_tag: "Teens & Adults · A1–B2",
-        c2_title: "General English & Conversation",
-        c2_desc: "Strengthen your core speaking skills, sharpen your listening, and build confidence in-person or online.",
-        c3_tag: "Official Certification",
-        c3_title: "Oxford Test of English (B1 / B2)",
-        c3_desc: "Targeted preparation for OTE and OTE for Schools with practical strategies for Speaking, Writing, Reading, and Listening.",
-        c4_tag: "Practical · Multilevel",
-        c4_title: "Travel & Everyday English",
-        c4_desc: "Real-world modules for airports, hotels, restaurants, and daily travel situations—even if you're starting from scratch.",
+        c1_desc: "Small groups for primary school learners with songs, phonics, visual vocabulary, and natural classroom speaking routines.",
+        c2_tag: "Secondary · Teens",
+        c2_title: "English for Teenagers",
+        c2_desc: "Relevant topics, authentic speaking practice, and solid grammar so teens use English confidently inside and outside school.",
+        c3_tag: "Teens & Adults · A1–C1",
+        c3_title: "General English & Conversation",
+        c3_desc: "From beginner to advanced (A1–C1): sharpen your listening skills, expand vocabulary, and build lasting speaking fluency.",
+        c4_tag: "Official Certification",
+        c4_title: "Oxford Test of English",
+        c4_desc: "Targeted preparation for OTE and OTE for Schools with practical strategies for Speaking, Writing, Reading, and Listening.",
+        c5_tag: "Professional",
+        c5_title: "Business English",
+        c5_desc: "Professional emails, phone calls, meetings, and presentations to communicate naturally in international workplaces.",
+        c6_tag: "Practical · Multilevel",
+        c6_title: "Travel & Everyday English",
+        c6_desc: "Real-world modules for airports, hotels, restaurants, and daily travel situations—even if you're starting from scratch.",
+        c7_tag: "100% Tailored",
+        c7_title: "One-to-One Private Lessons",
+        c7_desc: "Individual lessons with flexible scheduling, personalized pacing, and materials designed around your exact goals.",
         hof_eyebrow: "Proven Results",
         hof_title: "Hall of Fame · Official Certificates",
-        hof_all: "All",
-        banner_title: "Already a PROVO student?",
-        banner_desc: "Sign in to the interactive English portal with your student credentials to review lessons, listen to audio, and send voice notes.",
-        banner_btn: "Launch Study Portal →",
+        hof_cert_prefix: "Official Certificate",
+        banner_pill: "PROVO Interactive Tool",
+        banner_title: "Train Your English on Our Study Portal",
+        banner_desc: "Our own English-only digital platform featuring multilevel interactive lessons, audio prompts, challenges, and voice-note recording to practice at your own pace (available separately from classes).",
+        banner_btn: "Open Study Portal →",
+        banner_btn_info: "Request Access",
         contact_eyebrow: "Get in Touch",
-        contact_title: "Want to find the right group or schedule?",
-        contact_info_title: "Classes in Manresa & Online",
-        contact_info_desc: "Message us with no obligation to ask about open spots, afternoon timetables, or one-to-one online lessons.",
+        contact_title: "Want to find the right course or schedule?",
+        contact_info_title: "Live & Flexible Online Classes",
+        contact_info_desc: "Message us with no obligation to ask about open timetables, level groups, private lessons, or Study Portal access.",
+        contact_line_1: "💻 100% Live Online Classes (Google Meet / Zoom)",
         ph_name: "Your name...",
         ph_email: "Your email address...",
-        ph_msg: "Tell us what you're looking for (level, age, OTE prep, travel...)",
+        ph_msg: "Tell us what you're looking for (level, age, OTE, private lessons, portal...)",
         contact_send: "Send Inquiry →",
         contact_ok: "✓ Thank you! Your inquiry is ready.",
-        footer_text: "English Academy · Manresa & Online"
+        footer_text: "Online English Academy"
       }
     };
 
     let currentLang = localStorage.getItem('provoAcademyLang') || 'ca';
-    let currentHofFilter = 'all';
 
     function renderHallOfFame() {
-      const grid = document.getElementById('hofGrid');
-      const items = HALL_OF_FAME.filter(item => currentHofFilter === 'all' || item.level === currentHofFilter);
-      grid.innerHTML = items.map(item => `
-        <article class="hof-card">
-          <div>
-            <div class="hof-top" style="margin-bottom: 0.9rem;">
-              <div class="hof-avatar">${item.initials}</div>
-              <span class="hof-cert">🏆 ${item.cert}</span>
+      const track = document.getElementById('hofTrack');
+      const dots = document.getElementById('hofDots');
+      const prefix = I18N[currentLang].hof_cert_prefix;
+
+      track.innerHTML = HALL_OF_FAME.map((item, idx) => {
+        const avatarHtml = item.photo
+          ? `<img src="${item.photo}" alt="${item.name}" onerror="this.parentElement.textContent='${item.initials}';" />`
+          : item.initials;
+
+        return `
+          <article class="hof-card" data-hof-idx="${idx}">
+            <div>
+              <div class="hof-top" style="margin-bottom: 0.9rem;">
+                <div class="hof-avatar-box">${avatarHtml}</div>
+                <span class="hof-cert">🏆 ${prefix} ${item.level}</span>
+              </div>
+              <div class="hof-name">${item.name}</div>
+              <div class="hof-meta">${item.year}</div>
             </div>
-            <div class="hof-name">${item.name}</div>
-            <div class="hof-meta">${item.year} · Certified</div>
-          </div>
-          <p class="hof-quote">${item.quote[currentLang] || item.quote.ca}</p>
-        </article>
+            <p class="hof-quote">${item.quote[currentLang] || item.quote.ca}</p>
+          </article>
+        `;
+      }).join('');
+
+      dots.innerHTML = HALL_OF_FAME.map((_, i) => `
+        <button type="button" class="hof-dot ${i === 0 ? 'active' : ''}" data-dot-idx="${i}" aria-label="Slide ${i + 1}"></button>
       `).join('');
+
+      dots.querySelectorAll('.hof-dot').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const i = Number(btn.getAttribute('data-dot-idx'));
+          const card = track.querySelector(`[data-hof-idx="${i}"]`);
+          if (card) {
+            track.scrollTo({ left: card.offsetLeft - track.offsetLeft, behavior: 'smooth' });
+          }
+        });
+      });
     }
+
+    const hofTrack = document.getElementById('hofTrack');
+    document.getElementById('hofPrevBtn').addEventListener('click', () => {
+      const step = hofTrack.clientWidth * 0.75;
+      hofTrack.scrollBy({ left: -step, behavior: 'smooth' });
+    });
+    document.getElementById('hofNextBtn').addEventListener('click', () => {
+      const step = hofTrack.clientWidth * 0.75;
+      hofTrack.scrollBy({ left: step, behavior: 'smooth' });
+    });
+    hofTrack.addEventListener('scroll', () => {
+      const cards = Array.from(hofTrack.querySelectorAll('.hof-card'));
+      if (!cards.length) return;
+      let closest = 0;
+      let minDiff = Infinity;
+      cards.forEach((c, idx) => {
+        const diff = Math.abs((c.offsetLeft - hofTrack.offsetLeft) - hofTrack.scrollLeft);
+        if (diff < minDiff) {
+          minDiff = diff;
+          closest = idx;
+        }
+      });
+      document.querySelectorAll('.hof-dot').forEach((d, idx) => d.classList.toggle('active', idx === closest));
+    });
 
     function applyLanguage(lang) {
       currentLang = I18N[lang] ? lang : 'ca';
@@ -1066,15 +1339,6 @@
       btn.addEventListener('click', () => applyLanguage(btn.getAttribute('data-lang')));
     });
 
-    document.querySelectorAll('.hof-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.hof-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        currentHofFilter = btn.getAttribute('data-hof');
-        renderHallOfFame();
-      });
-    });
-
     // Dark / Light mode
     const themeBtn = document.getElementById('themeToggleBtn');
     if (localStorage.getItem('provoAcademyTheme') === 'dark') {
@@ -1087,7 +1351,7 @@
       themeBtn.textContent = dark ? '☀️' : '🌙';
     });
 
-    // Simple Contact Form Handler (opens mailto or confirms)
+    // Contact Form Handler
     document.getElementById('contactForm').addEventListener('submit', (e) => {
       e.preventDefault();
       const name = document.getElementById('cName').value.trim();
