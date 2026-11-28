@@ -380,22 +380,34 @@
       border-color: var(--teal);
     }
 
-    .icon-pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 44px;
-      height: 44px;
-      border-radius: 13px;
-      background: var(--ice);
-      color: var(--ocean);
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
+    .about-card {
+      padding: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
-    html.dark .icon-pill {
-      background: rgba(56, 189, 248, 0.15);
-      color: #7DD3FC;
+    .about-photo {
+      width: 100%;
+      height: 175px;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-body {
+      padding: 1.4rem 1.5rem 1.55rem;
+    }
+
+    .about-body h3 {
+      font-size: 1.12rem;
+      font-weight: 800;
+      margin-bottom: 0.45rem;
+    }
+
+    .about-body p {
+      font-size: 0.9rem;
+      color: var(--muted);
     }
 
     .panel h3 {
@@ -494,24 +506,29 @@
 
     .hof-img-box {
       width: 100%;
-      aspect-ratio: 4 / 5;
-      background: var(--surface-alt);
+      aspect-ratio: 1 / 1;
+      background: #061830;
       overflow: hidden;
       border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .hof-img-box img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      object-position: center;
+      image-rendering: -webkit-optimize-contrast;
       display: block;
     }
 
     .hof-body {
-      padding: 1.15rem 1.25rem 1.3rem;
+      padding: 1.05rem 1.25rem 1.2rem;
       display: flex;
       flex-direction: column;
-      gap: 0.35rem;
+      gap: 0.3rem;
     }
 
     .hof-name {
@@ -795,28 +812,49 @@
       </div>
 
       <div class="grid-3">
-        <article class="panel">
-          <div class="icon-pill">💬</div>
-          <h3 data-i18n="feat_1_title">Parlar des del primer dia</h3>
-          <p data-i18n="feat_1_desc">
-            Sessions actives amb suport visual, jocs de rol i dinàmiques reals perquè guanyis fluïdesa sense memoritzar llistes interminables.
-          </p>
+        <article class="panel about-card">
+          <img
+            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+            alt="Speaking and conversation session"
+            class="about-photo"
+            loading="lazy"
+          />
+          <div class="about-body">
+            <h3 data-i18n="feat_1_title">Parlar des del primer dia</h3>
+            <p data-i18n="feat_1_desc">
+              Sessions actives amb suport visual, jocs de rol i dinàmiques reals perquè guanyis fluïdesa sense memoritzar llistes interminables.
+            </p>
+          </div>
         </article>
 
-        <article class="panel">
-          <div class="icon-pill">🎯</div>
-          <h3 data-i18n="feat_2_title">Explicacions clares i sense dogmes</h3>
-          <p data-i18n="feat_2_desc">
-            Quan cal aclarir un dubte de gramàtica o la mecànica d'un examen oficial, ho expliquem de manera directa perquè ho entenguis al 100%.
-          </p>
+        <article class="panel about-card">
+          <img
+            src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+            alt="Clear notes and structured study"
+            class="about-photo"
+            loading="lazy"
+          />
+          <div class="about-body">
+            <h3 data-i18n="feat_2_title">Explicacions clares i sense dogmes</h3>
+            <p data-i18n="feat_2_desc">
+              Quan cal aclarir un dubte de gramàtica o la mecànica d'un examen oficial, ho expliquem de manera directa perquè ho entenguis al 100%.
+            </p>
+          </div>
         </article>
 
-        <article class="panel">
-          <div class="icon-pill">🎓</div>
-          <h3 data-i18n="feat_3_title">Professors titulats i amb experiència</h3>
-          <p data-i18n="feat_3_desc">
-            Docents titulats i especialitzats en l'ensenyament d'anglès comunicatiu i certificacions oficials, amb seguiment proper del teu progrés.
-          </p>
+        <article class="panel about-card">
+          <img
+            src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&amp;fit=crop&amp;w=900&amp;q=80"
+            alt="Online teaching and guided support"
+            class="about-photo"
+            loading="lazy"
+          />
+          <div class="about-body">
+            <h3 data-i18n="feat_3_title">Professors titulats i amb experiència</h3>
+            <p data-i18n="feat_3_desc">
+              Docents titulats i especialitzats en l'ensenyament d'anglès comunicatiu i certificacions oficials, amb seguiment proper del teu progrés.
+            </p>
+          </div>
         </article>
       </div>
     </section>
@@ -1121,13 +1159,13 @@
         hof_cert_prefix: "Certificado Oficial",
         banner_pill: "Herramienta interactiva PROVO",
         banner_title: "Entrena tu inglés en nuestro Portal de Estudio",
-        banner_desc: "Un entorno digital propio en inglés con lecciones interactivas multinivell, audios, retos y grabación de notes de veu per practicar al teu ritme (servei independent de les classes).",
+        banner_desc: "Un entorno digital propio en inglés con lecciones interactivas multinivel, audios, retos y grabación de notas de voz para practicar a tu ritmo (servicio independiente de las clases).",
         banner_btn: "Acceder al Portal de Estudio →",
         banner_btn_info: "Solicitar acceso",
         contact_eyebrow: "Hablemos",
         contact_title: "¿Quieres saber qué curso u horario encaja contigo?",
         contact_info_title: "Classes online en directe i flexibles",
-        contact_info_desc: "Escríbenos sin compromiso para consultar horarios disponibles, grupos por niveles, clases particulares o acceso al Portal de Estudio.",
+        contact_info_desc: "Escríbenos sin compromiso para consultar horaris disponibles, grups per nivells, classes particulars o accés al Portal d'Estudi.",
         ph_name: "Tu nombre...",
         ph_email: "Tu correo electrónico...",
         ph_msg: "Cuéntanos qué buscas (nivel, edad, OTE, clases particulares, portal...)",
@@ -1206,13 +1244,19 @@
     };
 
     let currentLang = localStorage.getItem('provoAcademyLang') || 'ca';
+    const hofTrack = document.getElementById('hofTrack');
+    const hofDots = document.getElementById('hofDots');
+
+    function getVisibleCardsCount() {
+      if (window.innerWidth <= 620) return 1;
+      if (window.innerWidth <= 960) return 2;
+      return 3;
+    }
 
     function renderHallOfFame() {
-      const track = document.getElementById('hofTrack');
-      const dots = document.getElementById('hofDots');
       const prefix = I18N[currentLang].hof_cert_prefix;
 
-      track.innerHTML = HALL_OF_FAME.map((item, idx) => `
+      hofTrack.innerHTML = HALL_OF_FAME.map((item, idx) => `
         <article class="hof-card" data-hof-idx="${idx}">
           <div class="hof-img-box">
             <img src="${item.photo}" alt="${item.name} · ${prefix} ${item.level}" loading="lazy" />
@@ -1224,43 +1268,63 @@
         </article>
       `).join('');
 
-      dots.innerHTML = HALL_OF_FAME.map((_, i) => `
-        <button type="button" class="hof-dot ${i === 0 ? 'active' : ''}" data-dot-idx="${i}" aria-label="Slide ${i + 1}"></button>
+      const vis = getVisibleCardsCount();
+      const maxStartIdx = Math.max(0, HALL_OF_FAME.length - vis);
+      const stepCount = maxStartIdx + 1;
+
+      hofDots.innerHTML = Array.from({ length: stepCount }, (_, i) => `
+        <button type="button" class="hof-dot ${i === 0 ? 'active' : ''}" data-dot-idx="${i}" aria-label="Page ${i + 1}"></button>
       `).join('');
 
-      dots.querySelectorAll('.hof-dot').forEach(btn => {
+      hofDots.querySelectorAll('.hof-dot').forEach(btn => {
         btn.addEventListener('click', () => {
-          const i = Number(btn.getAttribute('data-dot-idx'));
-          const card = track.querySelector(`[data-hof-idx="${i}"]`);
+          const startIdx = Number(btn.getAttribute('data-dot-idx'));
+          const card = hofTrack.querySelector(`[data-hof-idx="${startIdx}"]`);
           if (card) {
-            track.scrollTo({ left: card.offsetLeft - track.offsetLeft, behavior: 'smooth' });
+            hofTrack.scrollTo({ left: card.offsetLeft - hofTrack.offsetLeft, behavior: 'smooth' });
           }
         });
       });
+
+      updateActiveHofDot();
     }
 
-    const hofTrack = document.getElementById('hofTrack');
-    document.getElementById('hofPrevBtn').addEventListener('click', () => {
-      const step = hofTrack.clientWidth * 0.75;
-      hofTrack.scrollBy({ left: -step, behavior: 'smooth' });
-    });
-    document.getElementById('hofNextBtn').addEventListener('click', () => {
-      const step = hofTrack.clientWidth * 0.75;
-      hofTrack.scrollBy({ left: step, behavior: 'smooth' });
-    });
-    hofTrack.addEventListener('scroll', () => {
+    function updateActiveHofDot() {
       const cards = Array.from(hofTrack.querySelectorAll('.hof-card'));
-      if (!cards.length) return;
+      const dots = Array.from(hofDots.querySelectorAll('.hof-dot'));
+      if (!cards.length || !dots.length) return;
+
+      const maxIdx = dots.length - 1;
       let closest = 0;
       let minDiff = Infinity;
-      cards.forEach((c, idx) => {
-        const diff = Math.abs((c.offsetLeft - hofTrack.offsetLeft) - hofTrack.scrollLeft);
+
+      for (let idx = 0; idx <= maxIdx; idx++) {
+        const card = cards[idx];
+        const diff = Math.abs((card.offsetLeft - hofTrack.offsetLeft) - hofTrack.scrollLeft);
         if (diff < minDiff) {
           minDiff = diff;
           closest = idx;
         }
-      });
-      document.querySelectorAll('.hof-dot').forEach((d, idx) => d.classList.toggle('active', idx === closest));
+      }
+      dots.forEach((d, idx) => d.classList.toggle('active', idx === closest));
+    }
+
+    document.getElementById('hofPrevBtn').addEventListener('click', () => {
+      const step = hofTrack.clientWidth;
+      hofTrack.scrollBy({ left: -step, behavior: 'smooth' });
+    });
+    document.getElementById('hofNextBtn').addEventListener('click', () => {
+      const step = hofTrack.clientWidth;
+      hofTrack.scrollBy({ left: step, behavior: 'smooth' });
+    });
+    hofTrack.addEventListener('scroll', updateActiveHofDot);
+    window.addEventListener('resize', () => {
+      const vis = getVisibleCardsCount();
+      const maxStartIdx = Math.max(0, HALL_OF_FAME.length - vis);
+      const stepCount = maxStartIdx + 1;
+      if (hofDots.children.length !== stepCount) {
+        renderHallOfFame();
+      }
     });
 
     function applyLanguage(lang) {
